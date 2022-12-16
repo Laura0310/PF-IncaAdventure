@@ -29,7 +29,7 @@ conn.sync({ force: false }).then(async () => {
   // await preChargeActivities();
   // await preChargeProducts();
   // await preChargeUsers();
-  server.listen(process.env.PORT, () => {
+  server.listen(process.env.$PORT, () => {
     console.log('%s listening at', process.env.PORT); // eslint-disable-line no-console
   });
 });
