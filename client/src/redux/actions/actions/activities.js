@@ -1,10 +1,12 @@
 import axios from "axios";
 import { GET_ACTIVITIES, GET_ACTIVITIES_BY_NAME, GET_ACTIVITY_BY_ID, GET_ACTIVITIES_BY_ORDER } from "../constantes";
 
+let {REACT_ENV_BASE_URL} = process.env
+
 export function getActivities() {
   return async function (dispatch) {
     try {
-      let activities = await axios.get("https://pf-incaadventure-production.up.railway.app/activities", {});
+      let activities = await axios.get(`${REACT_ENV_BASE_URL}/activities`, {});
       return dispatch({
         type: GET_ACTIVITIES,
         payload: activities.data
