@@ -3,6 +3,7 @@ import { GET_USERS, GET_USERS_BY_NAME, GET_USER_BY_ID, GET_USER_BY_USERNAME, GET
 
 export function getUsers() {
   return async function (dispatch) {
+    console.log("hola")
     try {
       let users = await axios.get("https://pf-incaadventure-production.up.railway.app/users", {});
       return dispatch({
