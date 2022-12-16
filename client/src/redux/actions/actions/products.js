@@ -1,10 +1,10 @@
 import axios from "axios";
-import {GET_PRODUCTS, GET_PRODUCTS_BY_NAME, GET_PRODUCTS_BY_ID, GET_PRODUCTS_BY_ORDER} from "../constantes";
+import { GET_PRODUCTS, GET_PRODUCTS_BY_NAME, GET_PRODUCTS_BY_ID, GET_PRODUCTS_BY_ORDER } from "../constantes";
 
-export function getProducts(){
-  return async function (dispatch){
+export function getProducts() {
+  return async function (dispatch) {
     try {
-      let products = await axios.get("http://localhost:3001/products", {});
+      let products = await axios.get("https://pf-incaadventure-production.up.railway.app/products", {});
       return dispatch({
         type: GET_PRODUCTS,
         payload: products.data
@@ -15,11 +15,11 @@ export function getProducts(){
   };
 };
 
-export function getProductsByName(name){
+export function getProductsByName(name) {
   // trae los que incluyan name, puede ser mas de 1
-  return async function (dispatch){
+  return async function (dispatch) {
     try {
-      let productsByName = await axios.get(`http://localhost:3001/products?name=${name}`, {});
+      let productsByName = await axios.get(`https://pf-incaadventure-production.up.railway.app/products?name=${name}`, {});
       return dispatch({
         type: GET_PRODUCTS_BY_NAME,
         payload: productsByName.data
@@ -30,10 +30,10 @@ export function getProductsByName(name){
   };
 };
 
-export function getProductsById(id){
-  return async function (dispatch){
+export function getProductsById(id) {
+  return async function (dispatch) {
     try {
-      let productsById = await axios.get(`http://localhost:3001/products/${id}`, {});
+      let productsById = await axios.get(`https://pf-incaadventure-production.up.railway.app/products/${id}`, {});
       return dispatch({
         type: GET_PRODUCTS_BY_ID,
         payload: productsById.data
@@ -44,16 +44,16 @@ export function getProductsById(id){
   };
 };
 
-export function getProductsByOrder(order){
-return async function (dispatch){
-  try {
-    let productsByOrder = await axios.get(`http://localhost:3001/products?order=${order}`, {});
-    return dispatch({
-      type: GET_PRODUCTS_BY_ORDER,
-      payload: productsByOrder.data
-    })
-  } catch (error) {
-   console.log(error) ;
+export function getProductsByOrder(order) {
+  return async function (dispatch) {
+    try {
+      let productsByOrder = await axios.get(`https://pf-incaadventure-production.up.railway.app/products?order=${order}`, {});
+      return dispatch({
+        type: GET_PRODUCTS_BY_ORDER,
+        payload: productsByOrder.data
+      })
+    } catch (error) {
+      console.log(error);
+    }
   }
-}
 };

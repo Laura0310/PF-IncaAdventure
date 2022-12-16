@@ -4,7 +4,7 @@ import { GET_USERS, GET_USERS_BY_NAME, GET_USER_BY_ID, GET_USER_BY_USERNAME, GET
 export function getUsers() {
   return async function (dispatch) {
     try {
-      let users = await axios.get("http://localhost:3001/users", {});
+      let users = await axios.get("https://pf-incaadventure-production.up.railway.app/users", {});
       return dispatch({
         type: GET_USERS,
         payload: users.data
@@ -19,7 +19,7 @@ export function getUsersByName(name) {
   // trae los que incluyan name, puede ser mas de 1
   return async function (dispatch) {
     try {
-      let usersByName = await axios.get(`http://localhost:3001/users?name=${name}`, {});
+      let usersByName = await axios.get(`https://pf-incaadventure-production.up.railway.app/users?name=${name}`, {});
       return dispatch({
         type: GET_USERS_BY_NAME,
         payload: usersByName.data
@@ -33,7 +33,7 @@ export function getUsersByName(name) {
 export function getUserById(id) {
   return async function (dispatch) {
     try {
-      let userById = await axios.get(`http://localhost:3001/users/${id}`, {});
+      let userById = await axios.get(`https://pf-incaadventure-production.up.railway.app/users/${id}`, {});
       return dispatch({
         type: GET_USER_BY_ID,
         payload: userById.data
@@ -47,7 +47,7 @@ export function getUserById(id) {
 export function getUserByUsername(username) {
   return async function (dispatch) {
     try {
-      let userByUsername = await axios.get(`http://localhost:3001/profile/${username}`, {});
+      let userByUsername = await axios.get(`https://pf-incaadventure-production.up.railway.app/profile/${username}`, {});
       return dispatch({
         type: GET_USER_BY_USERNAME,
         payload: userByUsername.data
@@ -71,7 +71,7 @@ export function createUser(user) {
         nationality: "pendiente",
         id_number: 1234
       };
-      const userCreated = await axios.post("http://localhost:3001/users", newUser);
+      const userCreated = await axios.post("https://pf-incaadventure-production.up.railway.app/users", newUser);
 
       return dispatch({
         type: GET_USER_BY_EMAIL,

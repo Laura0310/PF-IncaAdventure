@@ -1,10 +1,10 @@
 import axios from "axios";
-import {GET_STORES, GET_STORES_BY_NAME, GET_STORE_BY_ID} from "../constantes";
+import { GET_STORES, GET_STORES_BY_NAME, GET_STORE_BY_ID } from "../constantes";
 
-export function getStores(){
-  return async function (dispatch){
+export function getStores() {
+  return async function (dispatch) {
     try {
-      let stores = await axios.get("http://localhost:3001/stores", {});
+      let stores = await axios.get("https://pf-incaadventure-production.up.railway.app/stores", {});
       return dispatch({
         type: GET_STORES,
         payload: stores.data
@@ -15,11 +15,11 @@ export function getStores(){
   };
 };
 
-export function getStoresByName(name){
+export function getStoresByName(name) {
   // trae los que incluyan name, puede ser mas de 1
-  return async function (dispatch){
+  return async function (dispatch) {
     try {
-      let storesByName = await axios.get(`http://localhost:3001/stores?name=${name}`, {});
+      let storesByName = await axios.get(`https://pf-incaadventure-production.up.railway.app/stores?name=${name}`, {});
       return dispatch({
         type: GET_STORES_BY_NAME,
         payload: storesByName.data
@@ -30,10 +30,10 @@ export function getStoresByName(name){
   };
 };
 
-export function getStoreById(id){
-  return async function (dispatch){
+export function getStoreById(id) {
+  return async function (dispatch) {
     try {
-      let storeById = await axios.get(`http://localhost:3001/stores/${id}`, {});
+      let storeById = await axios.get(`https://pf-incaadventure-production.up.railway.app/stores/${id}`, {});
       return dispatch({
         type: GET_STORE_BY_ID,
         payload: storeById.data
